@@ -2,4 +2,130 @@
 ::after,
 ::before{
     box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+:root{
+    --dark-green: #264653;
+    --lighter-green: #2a9d8f;
+    --light-orange: #e9c46a;
+    --darker-orange: #f4a261;
+    --light-red: #e76f51;
+
+}
+
+
+body{
+    background-image: url("./imgs/pexels-darina-belonogova-8789747.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    margin: 0;
+
+    flex-direction: column;
+}
+
+
+header{
+    background-color: var(--dark-green);
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    
+}
+
+
+.score-bar{
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+}
+
+.side-bar{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid black;
+}
+
+#play-area{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pc-screen-img{
+    color: red;
+    height: 250px;
+    width: 400px;
+    border: 2px solid red;
+    position: absolute;
+    
+}
+
+.pc-figure{
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.side-bar{
+    color: var(--light-red);
+    background-color: var(--dark-green);
+    font-weight: 700;
+}
+
+
+button{
+    /* top right bottom left */
+    padding: 2em 2.5em 2em 2.5em;
+    /* margin: 5em; */
+    border: none;
+    /* border-radius: 5px; */
+}
+
+#buttons{
+    display: flex;
+    align-items: center;
+}
+
+#rock,
+#paper,
+#scissors{
+    opacity: 0.5;
+    border-radius: 1.5em;
+    border: 5px solid var(--light-red);
+    background-size: cover;
+    background-position: center;
+    margin: 5em;
+    height: 150px;
+    width: 100px;
+    /* border-radius: 50%; */
+}
+
+ #rock{
+    background-image: url(./imgs/rock.jpg);
+
+}
+
+#paper{
+    background-image: url(./imgs/paper.jpg);
+}
+
+#scissors{
+    background-image: url(./imgs/scissors.jpg);
+}
+
+
+#rock:hover, #paper:hover, #scissors:hover{
+    opacity: 1;
 }

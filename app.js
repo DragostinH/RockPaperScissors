@@ -1,10 +1,52 @@
-const test = "adawdasd";
+// Set both hands to empty string which we will later use 
+let playerHand = "";
+let compHand = "";
 
 
+// Set both scores
+let playerScoreP = document.querySelector('.user-score');
+
+let playerSpanScore = document.createElement('span');
+playerSpanScore.classList.add('player-score');
+playerSpanScore.textContent = parseInt("0");
+
+playerScoreP.appendChild(playerSpanScore);
+
+
+let computerScoreP = document.querySelector('.computer-score');
+let computerSpanScore = document.createElement('span');
+computerSpanScore.classList.add('pc-score');
+computerSpanScore.textContent = parseInt("0");
+
+computerScoreP.appendChild(computerSpanScore);
+
+let compScore = 0;
+let userScore = 0;
+
+console.log(compScore);
+console.log(userScore);
+console.log(playerSpanScore.textContent);
+
+// Add an event listener to every click to all 3 buttons
+// Also play 1 round of the game.
+document.querySelectorAll("button").forEach(e => {
+    e.addEventListener('click', (e) => {
+        playerHand = e.target.id;
+        compHand = getComputerHand();
+        playRoundOfRockPapyerScissors(playerHand, compHand);
+    })
+});
+
+
+
+
+// Getting the computer's hand. Decided to use Switch with numbers. Can also use 
+// let options = ["rock", "paper", "scissors"];
+//   return options[Math.floor(Math.random() * options.length)];
+// if you'd like
 function getComputerHand() {
     let randNumber = Math.ceil(Math.random() * 3);
     let hand = "";
-
     switch (randNumber) {
         case 1:
             hand = "rock";
@@ -16,89 +58,51 @@ function getComputerHand() {
             hand = "scissors";
             break;
     }
-
     return hand;
 }
 
-function getUserHand() {
-    let input = prompt("Please choose your hand.");
+function playRoundOfRockPapyerScissors(playerHand, computerHand) {
+    let userHand = playerHand;
+    let pcHand = computerHand;
 
-    while (input.toLowerCase() !== "rock" &&
-        input.toLowerCase() !== "paper" &&
-        input.toLowerCase() !== "scissors") {
-        input = prompt("Invalid hand. Please choose either 'rock', 'paper' or 'scissors");
+    if (pcHand === "rock" && userHand === "scissors") {
+        compScore++;
+        computerSpanScore.textContent++;
+        console.log("Point for the Computer for choosing ROCK");
+    } else if (pcHand === "rock" && userHand === "paper") {
+        userScore++;
+        playerSpanScore.textContent++;
+
+    } else if (pcHand === "rock" && userHand === "rock") {
+        console.log(`Both parties chose ${pcHand}`);
+    } else if (pcHand === "paper" && userHand === "paper") {
+
+    } else if (pcHand === "paper" && userHand === "rock") {
+        compScore++;
+        computerSpanScore.textContent++;
+
+    } else if (pcHand === "paper" && userHand === "scissors") {
+        userScore++;
+        playerSpanScore.textContent++;
+
+    } else if (pcHand === "scissors" && userHand === "scissors") {
+        console.log(`Both parties chose ${pcHand}`);
+    } else if (pcHand === "scissors" && userHand === "rock") {
+        userScore++;
+        playerSpanScore.textContent++;
+    } else if (pcHand === "scissors" && userHand === "paper") {
+        compScore++;
+        computerSpanScore.textContent++;
+
     }
-
-    console.log(`User has chosen ${input}`);
-    return input.toLowerCase();
-}
-
-function rockPaperScissorsGame() {
-    let n = parseInt(prompt("Please enter the amount of rounds you would like to play"));
-    let pcHand = "";
-    let userHand = "";
-    let compScore = 0;
-    let userScore = 0;
-
-    while (isNaN(n)) {
-        n = parseInt(prompt("You've not entered a valid number. Please try again"));
-    }
-
-    for (let i = 0; i < n; i++) {
-        pcHand = getComputerHand();
-        userHand = getUserHand();
-
-        if (pcHand === "rock" && userHand === "scissors") {
-
-            compScore++;
-            console.log("Point for the Computer for choosing ROCK");
-
-        } else if (pcHand === "rock" && userHand === "paper") {
-            userScore++;
-        } else if (pcHand === "rock" && userHand === "rock") {
-            console.log(`Both parties chose ${pcHand}`)
-
-        } else if (pcHand === "paper" && userHand === "paper") {
-            console.log(`Both parties chose ${pcHand}`)
-
-
-        } else if (pcHand === "paper" && userHand === "rock") {
-            compScore++;
-
-        } else if (pcHand === "paper" && userHand === "scissors") {
-            userScore++;
-
-        } else if (pcHand === "scissors" && userHand === "scissors") {
-            console.log(`Both parties chose ${pcHand}`)
-
-
-        } else if (pcHand === "scissors" && userHand === "rock") {
-            userScore++;
-
-        }else if (pcHand === "scissors" && userHand === "paper"){
-            compScore++;
-
-        }
-
-        console.log(`Current score:\n
+    console.log(`Current score:\n
         Computer: ${compScore}\n
-        User: ${userScore}`);
-
-    }
-
-    if(userScore > compScore){
-        console.log("Congratulations! You have bested the Computer at Rock, Paper, Scissors!")
-    }else if(userScore < compScore){
-        console.log("The Computer has beaten you at Rock, Paper, Scissors. Better luck next time.")
-    }else{
-        console.log("Stalemate!")
-    }
-
-    console.log(`The score for the computer is ${compScore} \n
-    The score for the User is ${userScore}`);
+        User: ${userScore}\n
+        Test: ${playerSpanScore.textContent}`);
 }
 
-console.log(rockPaperScissorsGame());
+
+
 
 /*
 

@@ -6,16 +6,49 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="app.js" defer></script>
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-    <button>ROCK</button>
-    <button>PAPER</button>
-    <button>SCISSORS</button>
+    <header>
+
+        <h1>
+            ROCK, PAPER, SCISSORS
+        </h1>
+    </header>
+
+    <section id="play-area">
+        <div class="container">
+            <figure class="pc-figure">
+                <div class="pc-screen-img">PC SCREEN</div>
+                <img src="./imgs/blank-screen-img-removebg-preview.png" alt="picture of a computer screen">
+            </figure>
+
+            <div id="buttons">
+
+                <button id="rock"></button>
+                <button id="paper"></button>
+                <button id="scissors"></button>
+
+            </div>
+        </div>
 
 
+        <div class="side-bar">
+            <p class="score-bar">SCORE</p>
+            <p class="computer-score">Computer Score: </p>
+            <p class="user-score">Player Score: </p>
+        </div>
+    </section>
+
+    <footer>
+        <p></p>
+    </footer>
 </body>
 
 </html>
