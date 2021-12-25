@@ -1,6 +1,7 @@
 // Set both hands to empty string which we will later use 
 let playerHand = "";
 let compHand = "";
+let numRounds = 0;
 
 
 // Set both scores
@@ -34,6 +35,7 @@ document.querySelectorAll("button").forEach(e => {
         playerHand = e.target.id;
         compHand = getComputerHand();
         playRoundOfRockPapyerScissors(playerHand, compHand);
+        numRounds++;
     })
 });
 
@@ -97,8 +99,8 @@ function playRoundOfRockPapyerScissors(playerHand, computerHand) {
     }
     console.log(`Current score:\n
         Computer: ${compScore}\n
-        User: ${userScore}\n
-        Test: ${playerSpanScore.textContent}`);
+        User: ${userScore}\n`);
+
 }
 
 
